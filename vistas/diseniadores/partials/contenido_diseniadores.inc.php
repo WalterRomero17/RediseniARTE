@@ -30,7 +30,7 @@
 					foreach ($diseniadores as $diseniador) {
 					
 				?>
-				<div class="col-md-4 ">
+				<div class="col-md-4 col-sm-4 col-xs-9">
 					<div class="team-wrapper">
 						<img src="images/<?php echo $diseniador["diseniador_img"];?>" class="img-responsive"
 							alt="team img">
