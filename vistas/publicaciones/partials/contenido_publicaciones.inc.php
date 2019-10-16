@@ -7,7 +7,7 @@
             <form action="index.php" method="get">
                 <input type="hidden" name="m" value = "publicaciones">
                 <select name="grupo">
-                    <option>Grupo</option>
+                    <option disabled selected value>Grupo</option>
                         <?php
                             $consulta_grupos = "SELECT grupo_id, grupo_descripcion from grupo";
                             $grupos = $conexion ->query($consulta_grupos);
@@ -18,7 +18,7 @@
                         ?>
                 </select>
                     <select name="categoria">
-                        <option value="">Categoria</option>
+                        <option disabled selected value >Categoria</option>
                             <?php
                                 $consulta_categoria = "SELECT categoria_id, categoria_descripcion from categoria";
                                 $categorias = $conexion ->query($consulta_categoria);
@@ -52,7 +52,7 @@
                                 <img src=<?php echo "files/".$resultado["publicacion_imagen"];?> alt="...">
                                 <div class="caption">
                                     <h3><?php echo $resultado["publicacion_titulo"];?></h3>
-                                    <p><?php echo $resultado["publicacion_descripcion"];?></p>
+                                    <p class = "text_ajust"><?php echo $resultado["publicacion_descripcion"];?></p>
                                     <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-primary" role="button">Button</a></p>
                                 </div>
                             </div>
@@ -61,30 +61,75 @@
             <?php
                     }
         
-                } else {
-                        $consulta = "SELECT * FROM publicacion, publicacion_categoria WHERE";
-                        $consulta .= " publicacion.publicacion_id = publicacion_categoria.publicacion_id ";
-                        $consulta .= "GROUP BY publicacion.publicacion_id;";
-                        
-                        $resultados = $conexion->query($consulta);
+                } elseif (isset($_GET["grupo"])) {
+                    $grupo1 = $_GET["grupo"];
 
-                        foreach ($resultados as $resultado ) {
-            ?>
+                    $consulta = "SELECT * FROM publicacion, publicacion_categoria WHERE";
+                    $consulta .= " publicacion.publicacion_id = publicacion_categoria.publicacion_id ";
+                    $consulta .= "AND publicacion.grupo_id = ".$grupo1;
+                    $consulta .= " GROUP BY publicacion.publicacion_id;";
                         
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src=<?php echo "files/".$resultado["publicacion_imagen"];?> alt="...">
-                                    <div class="caption">
-                                        <h3><?php echo $resultado["publicacion_titulo"];?></h3>
-                                        <p class = "text_ajust"><?php echo $resultado["publicacion_descripcion"];?></p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-primary" role="button">Button</a></p>
-                                    </div>
+                    $resultados = $conexion->query($consulta);
+
+                    foreach ($resultados as $resultado ) {
+            ?>
+                    <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src=<?php echo "files/".$resultado["publicacion_imagen"];?> alt="...">
+                                <div class="caption">
+                                    <h3><?php echo $resultado["publicacion_titulo"];?></h3>
+                                    <p class = "text_ajust"><?php echo $resultado["publicacion_descripcion"];?></p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-primary" role="button">Button</a></p>
                                 </div>
                             </div>
-                        
+                    </div>
             <?php
-                        }
                     }
+                }elseif (isset($_GET["categoria"])) {
+                    $categoria1 = $_GET["categoria"];
+
+                    $consulta = "SELECT * FROM publicacion, publicacion_categoria WHERE";
+                    $consulta .= " publicacion.publicacion_id = publicacion_categoria.publicacion_id ";
+                    $consulta .= "AND publicacion_categoria.publicacion_id = ".$categoria1;
+                    $consulta .= " GROUP BY publicacion.publicacion_id;";
+                        
+                    $resultados = $conexion->query($consulta);
+
+                    foreach ($resultados as $resultado ) {
+            ?>
+                    <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src=<?php echo "files/".$resultado["publicacion_imagen"];?> alt="...">
+                                <div class="caption">
+                                    <h3><?php echo $resultado["publicacion_titulo"];?></h3>
+                                    <p class = "text_ajust"><?php echo $resultado["publicacion_descripcion"];?></p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-primary" role="button">Button</a></p>
+                                </div>
+                            </div>
+                    </div>
+            <?php
+                    }
+                } else {
+                    $consulta = "SELECT * FROM publicacion, publicacion_categoria WHERE";
+                    $consulta .= " publicacion.publicacion_id = publicacion_categoria.publicacion_id ";
+                    $consulta .= "GROUP BY publicacion.publicacion_id;";
+                        
+                    $resultados = $conexion->query($consulta);
+                    foreach ($resultados as $resultado ) {  
+            ?>
+                    <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src=<?php echo "files/".$resultado["publicacion_imagen"];?> alt="...">
+                                <div class="caption">
+                                    <h3><?php echo $resultado["publicacion_titulo"];?></h3>
+                                    <p class = "text_ajust"><?php echo $resultado["publicacion_descripcion"];?></p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-primary" role="button">Button</a></p>
+                                </div>
+                            </div>
+                    </div>
+            <?php
+                    }
+                }            
             ?>
             </div>    
     </div>

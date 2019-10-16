@@ -10,7 +10,7 @@
       $resultado = $conexion->query($sql);
 
       if( $resultado->num_rows == 1){
-        $sql =  "SELECT usuario_nombre FROM usuario WHERE usuario_mail = '";
+        $sql =  "SELECT usuario_nombre,usuario_id FROM usuario WHERE usuario_mail = '";
         $sql .=  $_POST["email"] . "' AND usuario_password = '" . $_POST["pass"] ."';";
         
         $resultado = $conexion->query($sql);

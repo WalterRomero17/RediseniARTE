@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-8 col-sm-8 mt30">
                 <div class="input-group">
-                    <form action="procesar_publicar.php" method="post">
+                    <form action="procesar_publicar.php" method="post" enctype = "multipart/form-data">
                         <div>
                             <select name="grupo" required>
                                 <option>Grupo</option>
