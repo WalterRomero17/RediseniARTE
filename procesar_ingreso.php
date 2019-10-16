@@ -16,7 +16,7 @@
         $resultado = $conexion->query($sql);
         $usuario = $resultado->fetch_assoc();
         $_SESSION["nombre"] = $usuario["usuario_nombre"] ;
-       
+        $_SESSION["id"] = $usuario["usuario_id"];
         header("location: index.php");
 
       }

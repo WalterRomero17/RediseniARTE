@@ -25,9 +25,17 @@
             case "diseniadores":
                 $modulo = "diseniadores";
                 break;
+
+            case "publicaciones":
+                $modulo = "publicaciones";
+                break;
+
+            case "publicar":
+                $modulo = "publicar";
+                break;
         }
     }
 
-    include "vistas/" . $modulo . "/index.php" 
+    include "vistas/" . $modulo . "/index.php"; 
 
 ?> 

@@ -253,6 +253,28 @@ img {
 .form-control::-webkit-input-placeholder {
   color: #fff;
 }
+ /*publicacion*/
+.thumbnail{
+  background-color: rgb(25 ,25 ,25);
+}
+
+.thumbnail p {
+  color: #808080;
+}
+
+.text_ajust{
+  height: 90px;
+}
+
+select{
+  background: #202020;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  margin-bottom: 20px;
+  transition: all 0.4s ease-in;
+  color: #fff;
+}
 
 /* footer section */
 footer {
