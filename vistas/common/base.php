@@ -41,6 +41,15 @@
                     <li><a href="index.php?m=publicaciones">PUBLICACIONES</a></li>
 
                     <?php 
+                    if (isset($_SESSION["id"])) {
+                        $conexion = new mysqli("localhost", "root", "", "redisenio");
+                        $consulta = "SELECT * FROM diseniador where diseniador_id =  ".$_SESSION['id'].";";
+                        $resultados = $conexion->query($consulta);
+                    }else {
+                        $resultados = 0;
+                    }
+                    
+                   
                     if (isset($_SESSION["nombre"]) ) {
                     ?>
 
@@ -50,6 +59,13 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">Compras</a></li>
                             <li><a href="#">Favoritos</a></li>
+                            <?php
+                                if ($resultados->num_rows == 1) {
+                            ?>
+                            <li><a href="index.php?m=publicar">Publicar</a></li>
+                            <?php
+                                }
+                            ?>
                             <li><a href="logout.php">Cerrar Sesión</a></li>
                             
                         </ul>

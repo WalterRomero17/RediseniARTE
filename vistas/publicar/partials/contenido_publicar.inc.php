@@ -1,5 +1,6 @@
 <?php
     $conexion = new mysqli("localhost", "root", "", "redisenio");
+    $conexion->set_charset("utf8");
 ?>
 
 <div id="contact">

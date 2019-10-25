@@ -5,7 +5,7 @@
             <div class="col-md-5 col-sm-3"></div>
             <div class="col-md-7 col-sm-9">
                 <h3>Bienvenidos a</h3>
-                <h3>RediserñArte</h3>
+                <h3>RediseñArte</h3>
                 <h4>Una pagina para encontrar el diseño que necesitas</h4>
             </div>
         </div>
